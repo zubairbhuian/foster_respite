@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
             initialBinding: BaseBinding(
               
             ),
-            initialRoute: AppPages.INITIAL,
-            // initialRoute: Routes.SIGN_IN,
+            // initialRoute: AppPages.INITIAL,
+            initialRoute: Routes.LOGIN,
             getPages: AppPages.routes,
           );
         });

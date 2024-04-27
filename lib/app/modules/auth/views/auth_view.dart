@@ -1,20 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/divider_text.dart';
+import 'package:foster_respite/app/widgets/my_bottom_sheet.dart';
 import 'package:foster_respite/config/gape.dart';
+
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
-import '../controllers/welcome_controller.dart';
+import '../controllers/auth_controller.dart';
 
-class WelcomeView extends GetView<WelcomeController> {
-  const WelcomeView({super.key});
+class AuthView extends GetView<AuthController> {
+  const AuthView({super.key});
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
+   ThemeData theme = Theme.of(context);
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
@@ -34,7 +36,7 @@ class WelcomeView extends GetView<WelcomeController> {
                 SizedBox(height: Gaps.medium),
                 _appleLogin(theme),
                 SizedBox(height: Gaps.xxxlarge),
-                _bottomText(theme)
+                _bottomText(theme, context)
               ],
             ),
           ),
@@ -55,7 +57,7 @@ class WelcomeView extends GetView<WelcomeController> {
     );
   }
 
- // ****** Email Login ******
+  // ****** Email Login ******
   Widget _customEmailLogin(ThemeData theme) {
     return PrimaryBtn(
         onPressed: () {},
@@ -112,7 +114,7 @@ class WelcomeView extends GetView<WelcomeController> {
   }
 
   // ****** Bottom Text ******
-  Widget _bottomText(theme) {
+  Widget _bottomText(ThemeData theme, BuildContext context) {
     return RichText(
         text: TextSpan(
             text: "Don’t have an account?",
@@ -122,8 +124,47 @@ class WelcomeView extends GetView<WelcomeController> {
             text: " Register",
             style: theme.textTheme.labelMedium
                 ?.copyWith(color: theme.primaryColor),
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                MyBottomSheet.modal(
+                  height: 290.sp,
+                    context: context,
+                    // backgroundColor: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 20.sp),
+                        Text(
+                          "Are you a:",
+                          style: theme.textTheme.headlineMedium
+                              ?.copyWith(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: Gaps.xxlarge),
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutLineBtn(
+                              onPressed: () {},
+                              backgroundColor: const Color(0xffF7F8F9),
+                              borderColor: theme.primaryColorLight,
+                              foregroundColor: theme.primaryColorDark,
+                              child: const Text('Respite Provider')),
+                        ),
+                        SizedBox(height: Gaps.large),
+                        const DividerText("Or"),
+                        SizedBox(height: Gaps.medium),
+                         SizedBox(
+                          width: double.infinity,
+                          child: OutLineBtn(
+                              onPressed: () {},
+                              backgroundColor: const Color(0xffF7F8F9),
+                              foregroundColor: theme.primaryColorDark,
+                              child: const Text('Foster/Adoptive Parent')),
+                        ),
+                      ],
+                    ));
+              },
           )
         ]));
   }
 }
+

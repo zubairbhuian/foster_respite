@@ -37,7 +37,7 @@ class PrimaryBtn extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           elevation: elevation ?? 0,
           textStyle: style ??
-              theme.textTheme.labelMedium
+              theme.textTheme.labelLarge
                   ?.copyWith(color: foregroundColor ?? Colors.white),
           disabledBackgroundColor: theme.primaryColor.withOpacity(.2),
           disabledForegroundColor: Colors.white,
@@ -96,7 +96,7 @@ class OutLineBtn extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             padding: padding ??
                 const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-            foregroundColor: theme.primaryColor,
+            foregroundColor:foregroundColor?? theme.primaryColor,
             side: BorderSide(
                 width: 1,
                 color: borderColor ??
@@ -104,6 +104,7 @@ class OutLineBtn extends StatelessWidget {
                         ? theme.disabledColor
                         : theme.primaryColor)),
             backgroundColor: backgroundColor ?? Colors.transparent,
+            
             disabledForegroundColor: theme.disabledColor,
             disabledBackgroundColor: theme.disabledColor.withOpacity(.5),
             textStyle: textStyle,
