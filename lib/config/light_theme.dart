@@ -48,19 +48,19 @@ ThemeData lightTheme = ThemeData(
       //******  Label  ******
       labelLarge: TextStyle(
           fontFamily: Fonts.primary,
-          fontSize: 14.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w500,
-          color: const Color(0xff999999)),
+          color: const Color(0xff010101)),
       labelMedium: TextStyle(
           fontFamily: Fonts.primary,
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
-          color: const Color(0xff999999)),
+          color: const Color(0xff010101)),
       labelSmall: TextStyle(
           fontFamily: Fonts.primary,
           fontSize: 12.sp,
           fontWeight: FontWeight.w500,
-          color: const Color(0xff999999)),
+          color: const Color(0xff010101)),
 
       //******  Body  ******
       bodyLarge: TextStyle(
@@ -82,17 +82,17 @@ ThemeData lightTheme = ThemeData(
           fontFamily: Fonts.primary,
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
-          color: const Color(0xff666666)),
+          color: const Color(0xff0C1C2C)),
       titleMedium: TextStyle(
           fontFamily: Fonts.primary,
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
-          color: const Color(0xff666666)),
+          color: const Color(0xff0C1C2C)),
       titleSmall: TextStyle(
           fontFamily: Fonts.primary,
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
-          color: const Color(0xff666666)),
+          color: const Color(0xff0C1C2C)),
       //******  HeadLine  ******
       headlineLarge: TextStyle(
           fontFamily: Fonts.primary,

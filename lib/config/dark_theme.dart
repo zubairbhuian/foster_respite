@@ -48,7 +48,7 @@ ThemeData darkTheme = ThemeData(
       //******  Label  ******
       labelLarge: TextStyle(
           fontFamily: Fonts.primary,
-          fontSize: 14.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w500,
           color: const Color(0xff999999)),
       labelMedium: TextStyle(

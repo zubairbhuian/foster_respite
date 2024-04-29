@@ -1,9 +1,13 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   RxInt pageIndex = 0.obs;
   RxInt totalPage = 4.obs;
+  RxString countryFlagAndNumberCode = "🇺🇸  +1".obs;
+
+  String selectNumberCode = "";
 
   PageController pageController = PageController();
 
@@ -24,5 +28,11 @@ class AuthController extends GetxController {
       pageController.animateToPage(pageIndex.value,
           duration: const Duration(milliseconds: 1), curve: Curves.ease);
     }
+  }
+
+  void onSelectCountry(Country country) {
+    countryFlagAndNumberCode.value =
+        "${country.flagEmoji}  +${country.phoneCode}";
+    selectNumberCode = "+${country.phoneCode}";
   }
 }

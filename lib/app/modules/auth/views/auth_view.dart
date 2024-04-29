@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foster_respite/app/routes/app_pages.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/divider_text.dart';
 import 'package:foster_respite/app/widgets/my_bottom_sheet.dart';
@@ -16,7 +17,7 @@ class AuthView extends GetView<AuthController> {
   const AuthView({super.key});
   @override
   Widget build(BuildContext context) {
-   ThemeData theme = Theme.of(context);
+    ThemeData theme = Theme.of(context);
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
@@ -60,7 +61,9 @@ class AuthView extends GetView<AuthController> {
   // ****** Email Login ******
   Widget _customEmailLogin(ThemeData theme) {
     return PrimaryBtn(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(Routes.LOGIN);
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -127,7 +130,7 @@ class AuthView extends GetView<AuthController> {
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 MyBottomSheet.modal(
-                  height: 290.sp,
+                    height: 290.sp,
                     context: context,
                     // backgroundColor: Colors.white,
                     child: Column(
@@ -143,7 +146,10 @@ class AuthView extends GetView<AuthController> {
                         SizedBox(
                           width: double.infinity,
                           child: OutLineBtn(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.back();
+                                Get.toNamed(Routes.SIGNUP);
+                              },
                               backgroundColor: const Color(0xffF7F8F9),
                               borderColor: theme.primaryColorLight,
                               foregroundColor: theme.primaryColorDark,
@@ -152,10 +158,13 @@ class AuthView extends GetView<AuthController> {
                         SizedBox(height: Gaps.large),
                         const DividerText("Or"),
                         SizedBox(height: Gaps.medium),
-                         SizedBox(
+                        SizedBox(
                           width: double.infinity,
                           child: OutLineBtn(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.back();
+                                Get.toNamed(Routes.SIGNUP);
+                              },
                               backgroundColor: const Color(0xffF7F8F9),
                               foregroundColor: theme.primaryColorDark,
                               child: const Text('Foster/Adoptive Parent')),
@@ -167,4 +176,3 @@ class AuthView extends GetView<AuthController> {
         ]));
   }
 }
-

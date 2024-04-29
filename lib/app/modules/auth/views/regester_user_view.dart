@@ -19,7 +19,7 @@ class RegesterUserView extends GetView<AuthController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // App bar
-            _animatedSmoothIndicator(theme),
+            _appbar(theme),
             SizedBox(height: 16.sp),
             // pages
             _pages(theme)
@@ -28,17 +28,20 @@ class RegesterUserView extends GetView<AuthController> {
       ),
     );
   }
-
-  Widget _animatedSmoothIndicator(ThemeData theme) {
+  
+  
+  //****** App bar ******
+  Widget _appbar(ThemeData theme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.sp),
+          padding: EdgeInsets.all(8.sp),
           child: InkWell(
               onTap: () {
                 controller.pageDecrement();
               },
+              splashColor:theme.cardColor,
               borderRadius: BorderRadius.circular(800),
               child: Padding(
                 padding: EdgeInsets.all(8.sp),
@@ -56,7 +59,8 @@ class RegesterUserView extends GetView<AuthController> {
       ],
     );
   }
-
+  
+  //****** Pages ******
   Widget _pages(ThemeData theme) {
     return Expanded(
       child: PageView(
