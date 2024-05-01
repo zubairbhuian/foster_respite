@@ -17,7 +17,7 @@ ThemeData lightTheme = ThemeData(
     highlightColor: const Color(0x000000ff),
     indicatorColor: const Color(0x000000ff),
     shadowColor: const Color(0x000000ff),
-    splashColor: const Color(0xffFF7A59),
+    splashColor: const Color.fromARGB(119, 12, 147, 171),
     scaffoldBackgroundColor: const Color(0xffFFFFFF),
     secondaryHeaderColor: null,
     hoverColor: const Color(0x000000ff),

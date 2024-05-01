@@ -79,5 +79,7 @@ class AdditionalInformation extends GetView<AuthController> {
         ],
       ),
     );
+  
+  
   }
 }

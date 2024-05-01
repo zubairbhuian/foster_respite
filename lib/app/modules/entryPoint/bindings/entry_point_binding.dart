@@ -1,3 +1,4 @@
+import 'package:foster_respite/app/modules/profile/controllers/profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../controllers/entry_point_controller.dart';
@@ -5,8 +6,7 @@ import '../controllers/entry_point_controller.dart';
 class EntryPointBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<EntryPointController>(
-      () => EntryPointController(),
-    );
+    Get.put(EntryPointController());
+    Get.put(ProfileController());
   }
 }

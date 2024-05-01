@@ -1,23 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:foster_respite/app/modules/bookings/views/bookings_view.dart';
+import 'package:foster_respite/app/modules/earnings/views/earnings_view.dart';
+import 'package:foster_respite/app/modules/messages/views/messages_view.dart';
+import 'package:foster_respite/app/modules/profile/views/profile_view.dart';
 import 'package:get/get.dart';
 
 class EntryPointController extends GetxController {
-  //TODO: Implement EntryPointController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  int pageIndex = 0;
+  List<Widget> pages = [
+    const BookingsView(),
+    const EarningsView(),
+    const MessagesView(),
+    const ProfileView()
+  ];
 }

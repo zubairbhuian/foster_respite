@@ -1,19 +1,22 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foster_respite/app/modules/auth/controllers/auth_controller.dart';
+import 'package:foster_respite/app/modules/profile/controllers/profile_controller.dart';
+import 'package:foster_respite/app/widgets/appbar.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/custom_textfield.dart';
 import 'package:foster_respite/config/gape.dart';
+
 import 'package:get/get.dart';
 
-class AccountSetup extends GetView<AuthController> {
-  const AccountSetup({super.key});
-
+class MyProfileView extends GetView<ProfileController> {
+  const MyProfileView({super.key});
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Padding(
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body:  Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,21 +91,18 @@ class AccountSetup extends GetView<AuthController> {
             width: double.infinity,
             child: PrimaryBtn(
                 onPressed: () {
-                  controller.pageIncrement();
                 },
                 child: const Text(
-                  "Continue",
+                  "Update",
                 )),
           ),
           SizedBox(height: Gaps.medium),
         ],
       ),
+    )
     );
-  
-  
   }
-
-  Widget _profile(ThemeData theme) {
+    Widget _profile(ThemeData theme) {
     return Center(
         child: InkWell(
       onTap: () {},
