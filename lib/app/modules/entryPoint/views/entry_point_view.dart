@@ -36,14 +36,18 @@ class EntryPointView extends GetView<EntryPointController> {
             showSelectedLabels: true,
             showUnselectedLabels: true,
             items: const [
+                BottomNavigationBarItem(
+                  backgroundColor: Colors.white,
+                  icon: FaIcon(IconlyBold.home),
+                  label: "Home"),
               BottomNavigationBarItem(
                   backgroundColor: Colors.white,
                   icon: FaIcon(IconlyBold.document),
                   label: "Bookings"),
-              BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: FaIcon(IconlyBold.wallet),
-                  label: "Earnings"),
+              // BottomNavigationBarItem(
+              //     backgroundColor: Colors.white,
+              //     icon: FaIcon(IconlyBold.wallet),
+              //     label: "Earnings"),
               BottomNavigationBarItem(
                   backgroundColor: Colors.white,
                   icon: FaIcon(IconlyBold.chat),

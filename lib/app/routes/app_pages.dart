@@ -11,6 +11,8 @@ import '../modules/earnings/bindings/earnings_binding.dart';
 import '../modules/earnings/views/earnings_view.dart';
 import '../modules/entryPoint/bindings/entry_point_binding.dart';
 import '../modules/entryPoint/views/entry_point_view.dart';
+import '../modules/goPremium/bindings/go_premium_binding.dart';
+import '../modules/goPremium/views/go_premium_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/messages/bindings/messages_binding.dart';
@@ -77,6 +79,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.GO_PREMIUM,
+      page: () => const GoPremiumView(),
+      binding: GoPremiumBinding(),
     ),
   ];
 }

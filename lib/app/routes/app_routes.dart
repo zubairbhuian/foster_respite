@@ -15,6 +15,7 @@ abstract class Routes {
   static const MESSAGES = _Paths.MESSAGES;
   static const PROFILE = _Paths.PROFILE;
   static const HOME = _Paths.HOME;
+  static const GO_PREMIUM = _Paths.GO_PREMIUM;
 }
 
 abstract class _Paths {
@@ -30,4 +31,5 @@ abstract class _Paths {
   static const MESSAGES = '/messages';
   static const PROFILE = '/profile';
   static const HOME = '/home';
+  static const GO_PREMIUM = '/go-premium';
 }

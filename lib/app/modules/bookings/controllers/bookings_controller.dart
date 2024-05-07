@@ -1,23 +1,12 @@
 import 'package:get/get.dart';
 
 class BookingsController extends GetxController {
-  //TODO: Implement BookingsController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  bool isNormalUser = true;
+  int pageIndex = 0;
 
   @override
   void onReady() {
+    // TODO: implement onReady
     super.onReady();
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

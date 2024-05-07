@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iconly/iconly.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../utils/int_extensions.dart';
@@ -397,6 +398,170 @@ class CustomTextField extends StatelessWidget {
   }
 }
 
+class CustomSearchTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final bool? obscureText;
+  final bool? readOnly;
+  final Widget? suffixIcon;
+  final Widget? suffixIconColor;
+  final Widget? prefixIcon;
+  final String? hintText;
+  final Widget? label;
+  final String? extraLabel;
+  final TextStyle? labelStyle;
+  final TextStyle? extraLabelStyle;
+  final TextStyle? errorStyle;
+  final VoidCallback? onTap;
+  final AutovalidateMode? autovalidateMode;
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
+  final Function(String)? onChange;
+  final EdgeInsetsGeometry? padding;
+  final Color? cursorColor;
+  final Color? fillColor;
+  final TextAlign? textAlign;
+  final double? fontSize;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool? autofocus;
+  final double? borderRadius;
+  final TextStyle? style;
+  final String? errorText;
+  final VoidCallback? onEditingComplete;
+  final int? maxLines;
+  final double? marginBottom;
+
+  const CustomSearchTextField(
+      {super.key,
+      this.controller,
+      this.obscureText,
+      this.readOnly,
+      this.suffixIcon,
+      this.prefixIcon,
+      this.hintText,
+      this.label,
+      this.onTap,
+      this.autovalidateMode,
+      this.keyboardType,
+      this.validator,
+      this.onChange,
+      this.padding,
+      this.cursorColor,
+      this.inputFormatters,
+      this.autofocus,
+      this.textAlign,
+      this.fontSize,
+      this.style,
+      this.errorText,
+      this.onEditingComplete,
+      this.maxLines,
+      this.suffixIconColor,
+      this.extraLabel,
+      this.extraLabelStyle,
+      this.labelStyle,
+      this.errorStyle,
+      this.marginBottom,
+      this.borderRadius, this.fillColor});
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // ********** extraLabel ********
+        if (extraLabel != null)
+          Text(
+            extraLabel ?? "",
+            style: extraLabelStyle ?? theme.textTheme.labelSmall,
+          ),
+        if (extraLabel != null)
+          const SizedBox(
+            height: 6,
+          ),
+        TextFormField(
+          // ********** controller ********
+          controller: controller,
+          // ********** validator ********
+          validator: validator,
+          // ********** onChanged ********
+          onChanged: onChange,
+          // ********** obscureText ********
+          obscureText: obscureText ?? false,
+          // ********** readOnly ********
+          readOnly: readOnly ?? false,
+          // ********** autovalidateMode ********
+          autovalidateMode: autovalidateMode,
+          // ********** cursorColor ********
+          cursorColor: cursorColor ?? theme.primaryColor,
+          // ********** maxLines ********
+          maxLines: maxLines ?? 1,
+          // ********** autofocus ********
+          autofocus: autofocus ?? false,
+          // ********** textAlign ********
+          textAlign: textAlign ?? TextAlign.start,
+          // ********** onTap ********
+          onTap: onTap,
+          // ********** style ********
+          style: style ?? theme.textTheme.labelMedium,
+          // ********** controller ********
+          onEditingComplete: onEditingComplete,
+          // ********** keyboardType ********
+          keyboardType: keyboardType,
+          //! ********** decoration ********
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: fillColor ?? theme.dividerColor.withOpacity(.1),
+            // ********** errorText ********
+            errorText: errorText,
+            errorStyle: errorStyle ??
+                theme.textTheme.labelMedium?.copyWith(color: Colors.red),
+            errorMaxLines: 5,
+            // ********** padding ********
+
+            contentPadding: padding ??
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            // ********** prefixIcon ********
+            prefixIcon: prefixIcon ??
+                Icon(
+                  IconlyLight.search,
+                  color: theme.hintColor,
+                ),
+            // ********** suffixIcon ********
+            suffixIcon: suffixIcon,
+            // ********** border ********
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 12),
+                borderSide: BorderSide.none),
+            // ********** focusedBorder ********
+            focusColor: theme.primaryColor,
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 12),
+                borderSide: BorderSide.none),
+            // ********** enabledBorder ********
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 12),
+                borderSide: BorderSide.none),
+            // ********** errorBorder ********
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 12),
+                borderSide: BorderSide.none),
+            // ********** hintText ********
+            hintText: hintText ?? "Search...",
+            hintStyle:
+                theme.textTheme.labelMedium?.copyWith(color: theme.hintColor),
+            // ********** label ********
+            label: label,
+            labelStyle: labelStyle ?? theme.textTheme.labelLarge,
+          ),
+          // ********** inputFormatters ********
+          inputFormatters:
+              inputFormatters ?? [LengthLimitingTextInputFormatter(40)],
+        ),
+      ],
+    );
+  }
+}
+
 class CustomPassWordTextField extends StatefulWidget {
   final TextEditingController? controller;
   final bool? readOnly;
@@ -577,7 +742,6 @@ class _CustomPassWordTextFieldState extends State<CustomPassWordTextField> {
 }
 
 class CustomDropdownTextField extends StatelessWidget {
-  
   const CustomDropdownTextField({
     super.key,
     this.label,
@@ -606,32 +770,34 @@ class CustomDropdownTextField extends StatelessWidget {
         if (label != null)
           Text(
             label ?? "",
-            style:theme.textTheme.labelSmall,
+            style: theme.textTheme.labelSmall,
           ),
         SizedBox(height: label == null ? 0 : 6),
         DropdownButtonFormField<String>(
           hint: hint ??
               Text(
                 'Select',
-                style: theme.textTheme.labelMedium?.copyWith(color: theme.hintColor),
+                style: theme.textTheme.labelMedium
+                    ?.copyWith(color: theme.hintColor),
               ),
           icon: icon,
           dropdownColor: Colors.white,
           decoration: InputDecoration(
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide:  BorderSide(color: theme.hintColor)),
+                  borderSide: BorderSide(color: theme.hintColor)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide:  BorderSide(color: theme.hintColor)),
+                  borderSide: BorderSide(color: theme.hintColor)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide:  BorderSide(color: theme.hintColor)),
+                  borderSide: BorderSide(color: theme.hintColor)),
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 13, horizontal: 20),
               filled: true,
               fillColor: Colors.white,
-              hintStyle: theme.textTheme.labelMedium?.copyWith(color: theme.hintColor) // Set the background color here
+              hintStyle: theme.textTheme.labelMedium?.copyWith(
+                  color: theme.hintColor) // Set the background color here
               ),
           items: List.generate(
               data.length,

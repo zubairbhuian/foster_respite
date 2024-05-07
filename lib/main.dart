@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
               
             ),
             // initialRoute: AppPages.INITIAL,
-            initialRoute: Routes.ENTRY_POINT,
+            initialRoute: Routes.GO_PREMIUM,
             getPages: AppPages.routes,
           );
         });

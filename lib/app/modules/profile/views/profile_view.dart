@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foster_respite/app/modules/profile/views/availability_view.dart';
 import 'package:foster_respite/app/modules/profile/views/change_password_view.dart';
 import 'package:foster_respite/app/modules/profile/views/contact_us_view.dart';
 import 'package:foster_respite/app/modules/profile/views/my_account_view.dart';
+import 'package:foster_respite/app/modules/profile/views/reviews_view.dart';
 import 'package:foster_respite/app/routes/app_pages.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/custom_tile.dart';
@@ -37,6 +40,18 @@ class ProfileView extends GetView<ProfileController> {
                 title: "Change Password",
                 onTap: () {
                   Get.to(() => const ChangePasswordView());
+                },
+              ),
+                CustomTile(
+                title: "My Reviews",
+                onTap: () {
+                  Get.to(() => const ReviewsView());
+                },
+              ),
+                CustomTile(
+                title: "Availability",
+                onTap: () {
+                  Get.to(() => const AvailabilityView());
                 },
               ),
               CustomTile(
