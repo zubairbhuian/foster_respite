@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foster_respite/app/modules/auth/controllers/auth_controller.dart';
+import 'package:foster_respite/app/utils/logger.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/custom_textfield.dart';
 import 'package:foster_respite/config/gape.dart';
@@ -46,7 +47,7 @@ class AccountSetup extends GetView<AuthController> {
                       width: 100,
                       height: 54,
                       child: Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 16.sp),
+                        padding: EdgeInsets.symmetric(horizontal: 16.sp),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -54,8 +55,7 @@ class AccountSetup extends GetView<AuthController> {
                                 onTap: () {
                                   showCountryPicker(
                                     context: context,
-                                    showPhoneCode:
-                                        true,
+                                    showPhoneCode: true,
                                     onSelect: (Country country) {
                                       controller.onSelectCountry(country);
                                     },
@@ -78,8 +78,6 @@ class AccountSetup extends GetView<AuthController> {
                       ),
                     ),
                   ),
-                
-                
                 ],
               ),
             ),
@@ -98,8 +96,6 @@ class AccountSetup extends GetView<AuthController> {
         ],
       ),
     );
-  
-  
   }
 
   Widget _profile(ThemeData theme) {
@@ -140,5 +136,4 @@ class AccountSetup extends GetView<AuthController> {
       ),
     ));
   }
-
 }

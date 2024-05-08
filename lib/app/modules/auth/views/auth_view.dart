@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foster_respite/app/routes/app_pages.dart';
+import 'package:foster_respite/app/utils/logger.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/divider_text.dart';
 import 'package:foster_respite/app/widgets/my_bottom_sheet.dart';
@@ -80,7 +81,9 @@ class AuthView extends GetView<AuthController> {
   // ****** Google Login ******
   Widget _googleLogin(ThemeData theme) {
     return PrimaryBtn(
-        onPressed: () {},
+        onPressed: () {
+          Get.offAllNamed(Routes.ENTRY_POINT);
+        },
         backgroundColor: const Color(0xffF7F8F9),
         foregroundColor: theme.primaryColorDark,
         child: Row(
@@ -101,7 +104,9 @@ class AuthView extends GetView<AuthController> {
   // ****** Apple Login ******
   Widget _appleLogin(ThemeData theme) {
     return PrimaryBtn(
-        onPressed: () {},
+        onPressed: () {
+          Get.offAllNamed(Routes.ENTRY_POINT);
+        },
         backgroundColor: const Color(0xff000000),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -148,6 +153,8 @@ class AuthView extends GetView<AuthController> {
                           child: OutLineBtn(
                               onPressed: () {
                                 Get.back();
+                                controller.isRespiteProvider.value = true;
+                                kLogger.e(controller.isRespiteProvider.value);
                                 Get.toNamed(Routes.SIGNUP);
                               },
                               backgroundColor: const Color(0xffF7F8F9),
@@ -163,6 +170,8 @@ class AuthView extends GetView<AuthController> {
                           child: OutLineBtn(
                               onPressed: () {
                                 Get.back();
+                                controller.isRespiteProvider.value = false;
+                                kLogger.e(controller.isRespiteProvider.value);
                                 Get.toNamed(Routes.SIGNUP);
                               },
                               backgroundColor: const Color(0xffF7F8F9),

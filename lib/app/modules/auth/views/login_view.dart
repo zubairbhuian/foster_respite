@@ -51,7 +51,10 @@ class LoginView extends GetView<AuthController> {
                   SizedBox(
                       width: double.infinity,
                       child: PrimaryBtn(
-                          onPressed: () {}, child: const Text('Login'))),
+                          onPressed: () {
+                            Get.offAllNamed(Routes.ENTRY_POINT);
+                          },
+                          child: const Text('Login'))),
                   SizedBox(height: 130.h),
                   _bottomText(theme),
                   SizedBox(height: 30.sp),

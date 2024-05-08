@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class MyIndicator extends StatelessWidget {
@@ -7,7 +6,7 @@ class MyIndicator extends StatelessWidget {
   const MyIndicator({
     super.key,
     required this.count,
-    required this.activeIndex,
+    required this.activeIndex
   });
 
   @override
@@ -15,15 +14,16 @@ class MyIndicator extends StatelessWidget {
     ThemeData theme = Theme.of(context);
     return Row(
       children: List.generate(
-          4,
+          count,
           (index) => Expanded(
                 child: Container(
-                  margin:   EdgeInsets.only(right:index+1==count? 0:8),
-                  height:6,
-                  decoration:  BoxDecoration(
-                    color:activeIndex==index? theme.primaryColorLight:theme.hintColor,
-                    borderRadius: BorderRadius.circular(23)
-                    ),
+                  margin: EdgeInsets.only(right: index + 1 == count ? 0 : 8),
+                  height: 6,
+                  decoration: BoxDecoration(
+                      color: activeIndex == index
+                          ? theme.primaryColorLight
+                          : theme.hintColor,
+                      borderRadius: BorderRadius.circular(23)),
                 ),
               )),
     );

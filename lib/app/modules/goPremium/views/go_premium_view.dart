@@ -41,8 +41,9 @@ class GoPremiumView extends GetView<GoPremiumController> {
               _row(theme, text: "Nationwide Search"),
               _row(theme, text: "Providers are Background Cleared"),
               _row(theme, text: "Providers are Fingerprinted"),
-              _priceCard(theme, isRecommended: true),
-              _priceCard(theme),
+              SizedBox(height: 8.sp),
+              _priceCard(theme, isRecommended: true,amount: "2.99",time: "month"),
+              _priceCard(theme,amount: "35.88",time: "year"),
               SizedBox(height: 20.sp),
               SizedBox(
                   width: double.infinity,
@@ -116,7 +117,7 @@ class GoPremiumView extends GetView<GoPremiumController> {
     );
   }
 
-  Widget _priceCard(ThemeData theme, {bool isRecommended = false}) {
+  Widget _priceCard(ThemeData theme, {bool isRecommended = false,required String amount,required String time}) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -132,12 +133,12 @@ class GoPremiumView extends GetView<GoPremiumController> {
           child: Column(
             children: [
               Text.rich(TextSpan(
-                  text: "\$2.99",
+                  text: "\$$amount",
                   style:
                       theme.textTheme.titleLarge?.copyWith(color: Colors.white),
                   children: [
                     TextSpan(
-                        text: "/month",
+                        text: "/$time",
                         style: theme.textTheme.labelSmall
                             ?.copyWith(color: Colors.white))
                   ])),

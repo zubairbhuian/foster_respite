@@ -7,7 +7,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-
 import 'app/services/base/dio_interceptor.dart';
 import 'app/services/base/preferences.dart';
 import 'app/services/bindings/base_binding.dart';
@@ -28,7 +27,6 @@ Future<void> main() async {
   //   statusBarColor: kPrimaryColor,
   //   statusBarIconBrightness: Brightness.light,
   // ));
-
   /// Shared Preferences
   await Preferences.init();
 
@@ -62,7 +60,6 @@ class MyApp extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             initialBinding: BaseBinding(
-              
             ),
             // initialRoute: AppPages.INITIAL,
             initialRoute: Routes.GO_PREMIUM,

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foster_respite/app/modules/auth/controllers/auth_controller.dart';
+import 'package:foster_respite/app/modules/entryPoint/controllers/entry_point_controller.dart';
+import 'package:foster_respite/app/routes/app_pages.dart';
+import 'package:foster_respite/app/services/base/preferences.dart';
+import 'package:foster_respite/app/utils/logger.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/doted_border_btn.dart';
 import 'package:foster_respite/config/gape.dart';
@@ -28,54 +32,79 @@ class UploadDocuments extends GetView<AuthController> {
                     style: theme.textTheme.headlineSmall,
                   ),
                   SizedBox(height: 24.sp),
-                  DotedBorderBtn(
-                    lavel: "Active Licensed Foster/Adoptive Home Certification",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                  DotedBorderBtn(
-                    lavel: "Current Respite Approved Training Certificate",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                  DotedBorderBtn(
-                    lavel: "Current CPR Certification",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                  DotedBorderBtn(
-                    lavel: "Current Medication Training Certificate",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                  DotedBorderBtn(
-                    lavel: "Current Trauma Informed Training Certificate",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                  DotedBorderBtn(
-                    lavel: "Current Sexual Abuse Training Certificate",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                  DotedBorderBtn(
-                    lavel:
-                        "Current 1 Year Background Check and Latest Fingerprint Clearance",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                   DotedBorderBtn(
-                    lavel:
-                        "Upload Photos of Your Home and Medication Lock Box",
-                    onTap: () {},
-                    isActive: false,
-                  ),
-                   DotedBorderBtn(
-                    lavel:
-                        "Upload Violations Within 6 months",
-                    onTap: () {},
-                    isActive: false,
-                  ),
+
+                  //****** Foster ******
+                  if (!controller.isRespiteProvider.value)
+                    SizedBox(
+                      child: Column(
+                        children: [
+                          DotedBorderBtn(
+                            lavel:
+                                "Active License Foster/Adoptive Home Certification",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                        ],
+                      ),
+                    ),
+                  //****** Respite Provider ******
+                  if (controller.isRespiteProvider.value)
+                    SizedBox(
+                      child: Column(
+                        children: [
+                          DotedBorderBtn(
+                            lavel:
+                                "Active Licensed Foster/Adoptive Home Certification",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel:
+                                "Current Respite Approved Training Certificate",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel: "Current CPR Certification",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel: "Current Medication Training Certificate",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel:
+                                "Current Trauma Informed Training Certificate",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel: "Current Sexual Abuse Training Certificate",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel:
+                                "Current 1 Year Background Check and Latest Fingerprint Clearance",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel:
+                                "Upload Photos of Your Home and Medication Lock Box",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                          DotedBorderBtn(
+                            lavel: "Upload Violations Within 6 months",
+                            onTap: () {},
+                            isActive: false,
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -85,6 +114,9 @@ class UploadDocuments extends GetView<AuthController> {
             child: PrimaryBtn(
                 onPressed: () {
                   controller.pageIncrement();
+                  Preferences.isRespiteProvider =
+                      controller.isRespiteProvider.value;
+                  Get.offAndToNamed(Routes.ENTRY_POINT);
                 },
                 child: const Text(
                   "Continue",

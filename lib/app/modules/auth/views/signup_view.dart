@@ -43,7 +43,7 @@ class SignupView extends GetView {
                       width: double.infinity,
                       child: PrimaryBtn(
                           onPressed: () {
-                            Get.offAllNamed(Routes.REGESTER_USER);
+                            Get.toNamed(Routes.REGESTER_USER);
                           },
                           child: const Text('Create Account'))),
                   SizedBox(height: 140.h),

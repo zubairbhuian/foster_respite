@@ -27,39 +27,63 @@ class AdditionalInformation extends GetView<AuthController> {
                   style: theme.textTheme.headlineSmall,
                 ),
                 SizedBox(height: 24.sp),
-                const CustomTextField(
-                  extraLabel: "How many bedrooms and baths:",
-                  hintText: 'Enter',
+                 // **** Foster  ****
+                if(!controller.isRespiteProvider.value) 
+                const SizedBox(
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        extraLabel: "How many kids need respite?",
+                        hintText: 'Enter',
+                      ),
+                      CustomTextField(
+                        extraLabel: "Ages of the kids need respite?",
+                        hintText: 'Enter',
+                      ),
+                    ],
+                  ),
                 ),
-                CustomDropdownTextField(
-                  label: "How many years being a respite provider:",
-                  data: const [
-                    "1-6 Months",
-                    "6 months - 1 Year",
-                    "1 - 3 Years",
-                    "3 Years - 6 Years",
-                    "6 Years+"
-                  ],
-                  onChanged: (value) {},
-                ),
-                const CustomTextField(
-                  extraLabel: "How many kids can respite:",
-                  hintText: 'Enter',
-                ),
-                const CustomTextField(
-                  extraLabel: "Ages able to provide respite:",
-                  hintText: 'Enter',
-                ),
-                CustomDropdownTextField(
-                  label: "Level of care able to respite:",
-                  data: const [
-                    "1-6 Months",
-                    "6 months - 1 Year",
-                    "1 - 3 Years",
-                    "3 Years - 6 Years",
-                    "6 Years+"
-                  ],
-                  onChanged: (value) {},
+                // **** Respite Provider ****
+                if(controller.isRespiteProvider.value) 
+                SizedBox(
+                  child: Column(
+                    children: [
+                      const CustomTextField(
+                        extraLabel: "How many bedrooms and baths:",
+                        hintText: 'Enter',
+                      ),
+                      CustomDropdownTextField(
+                        label: "How many years being a respite provider:",
+                        data: const [
+                          "1-6 Months",
+                          "6 months - 1 Year",
+                          "1 - 3 Years",
+                          "3 Years - 6 Years",
+                          "6 Years+"
+                        ],
+                        onChanged: (value) {},
+                      ),
+                      const CustomTextField(
+                        extraLabel: "How many kids can respite:",
+                        hintText: 'Enter',
+                      ),
+                      const CustomTextField(
+                        extraLabel: "Ages able to provide respite:",
+                        hintText: 'Enter',
+                      ),
+                      CustomDropdownTextField(
+                        label: "Level of care able to respite:",
+                        data: const [
+                          "1-6 Months",
+                          "6 months - 1 Year",
+                          "1 - 3 Years",
+                          "3 Years - 6 Years",
+                          "6 Years+"
+                        ],
+                        onChanged: (value) {},
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -79,7 +103,5 @@ class AdditionalInformation extends GetView<AuthController> {
         ],
       ),
     );
-  
-  
   }
 }

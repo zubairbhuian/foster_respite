@@ -52,7 +52,7 @@ class RegesterUserView extends GetView<AuthController> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Obx(() => MyIndicator(
-                count:controller.totalPage.value,
+                count:controller.isRespiteProvider.value?4:3,
                 activeIndex: controller.pageIndex.value,
               )),
         )
@@ -66,11 +66,12 @@ class RegesterUserView extends GetView<AuthController> {
       child: PageView(
         controller: controller.pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          AccountSetup(),
-          AddAddress(),
-          AdditionalInformation(),
-          UploadDocuments()
+        children:  [
+          const AccountSetup(),
+          if(controller.isRespiteProvider.value)
+          const AddAddress(),
+          const AdditionalInformation(),
+          const UploadDocuments()
         ],
       ),
     );
