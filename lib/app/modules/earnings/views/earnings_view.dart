@@ -46,7 +46,10 @@ class EarningsView extends GetView<EarningsController> {
             color: theme.primaryColorLight,
             child: Text(
               "Earnings",
-              style: theme.textTheme.titleLarge?.copyWith(color: Colors.white),
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: Colors.white,
+                fontSize: 24.sp
+                ),
             ),
           ),
           Positioned(

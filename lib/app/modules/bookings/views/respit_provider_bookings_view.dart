@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:foster_respite/app/modules/bookings/controllers/bookings_controller.dart';
 import 'package:foster_respite/app/modules/bookings/views/tabs/respit_provider_bookings_tab.dart';
 
 import 'package:get/get.dart';
 
-class RespitProviderBookingsView extends GetView {
+class RespitProviderBookingsView extends GetView<BookingsController> {
   const RespitProviderBookingsView({super.key});
   @override
   Widget build(BuildContext context) {
-        ThemeData theme = Theme.of(context);
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       body: DefaultTabController(
         length: 3,
@@ -33,13 +34,13 @@ class RespitProviderBookingsView extends GetView {
                       ),
                     ),
                     TabBar(
-                      // isScrollable: true,
+                        controller: controller.respitProviderTabController,
+                        // isScrollable: true,
                         indicatorColor: theme.primaryColor,
                         dividerHeight: 0,
-                        labelColor:Colors.white ,
+                        labelColor: Colors.white,
                         labelStyle: theme.textTheme.labelMedium,
-                        unselectedLabelColor:Colors.white.withOpacity(.3),
-                  
+                        unselectedLabelColor: Colors.white.withOpacity(.3),
                         tabs: const [
                           Tab(
                             child: Text("New"),
@@ -56,12 +57,20 @@ class RespitProviderBookingsView extends GetView {
               ),
             ),
             // tab view
-            const Expanded(
+            Expanded(
               child: TabBarView(
-                children: [
-                  RespitProviderBookingsTab(),
-                  RespitProviderBookingsTab(),
-                  RespitProviderBookingsTab(),
+                controller: controller.respitProviderTabController,
+                children: const [
+                  RespitProviderBookingsTab(
+                    tabIndex:
+                        0,
+                  ),
+                  RespitProviderBookingsTab(
+                    tabIndex:0,
+                  ),
+                  RespitProviderBookingsTab(
+                    tabIndex:0,
+                  ),
                 ],
               ),
             )
@@ -69,6 +78,5 @@ class RespitProviderBookingsView extends GetView {
         ),
       ),
     );
-  
   }
 }

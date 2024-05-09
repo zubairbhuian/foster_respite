@@ -13,7 +13,9 @@ class BookingsView extends GetView<BookingsController> {
   @override
   Widget build(BuildContext context) {
     return PageView(
-      children: const [FosterBookingsView(), RespitProviderBookingsView()],
+      controller: controller.pageController,
+      physics: const NeverScrollableScrollPhysics(),
+      children: const [ RespitProviderBookingsView(),FosterBookingsView()],
     );
   }
 }

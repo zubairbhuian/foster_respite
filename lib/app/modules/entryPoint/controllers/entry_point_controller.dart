@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foster_respite/app/modules/bookings/views/bookings_view.dart';
+import 'package:foster_respite/app/modules/earnings/views/earnings_view.dart';
 import 'package:foster_respite/app/modules/home/views/home_view.dart';
 import 'package:foster_respite/app/modules/messages/views/messages_view.dart';
 import 'package:foster_respite/app/modules/profile/views/profile_view.dart';
@@ -14,7 +15,12 @@ class EntryPointController extends GetxController {
   List<Widget> pages = [
     const HomeView(),
     const BookingsView(),
-    // const EarningsView(),
+    const MessagesView(),
+    const ProfileView()
+  ];
+  List<Widget> pages_2 = [
+    const BookingsView(),
+    const EarningsView(),
     const MessagesView(),
     const ProfileView()
   ];
@@ -22,6 +28,7 @@ class EntryPointController extends GetxController {
   @override
   void onReady() {
     isRespiteProvider.value = Preferences.isRespiteProvider;
+    update();
     super.onReady();
   }
 }

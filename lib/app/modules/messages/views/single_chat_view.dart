@@ -8,6 +8,7 @@ import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/custom_textfield.dart';
 
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
 
 class SingleChatView extends GetView<MessagesController> {
   const SingleChatView({super.key});
@@ -244,8 +245,18 @@ class SingleChatView extends GetView<MessagesController> {
             ],
           )
           // title
+          
         ],
       ),
+      actions:  [
+       IconButton(
+        onPressed: (){},
+        icon: const Icon(IconlyLight.call),
+        
+        
+        ),
+        SizedBox(width: 20.sp),
+      ],
     );
   }
 

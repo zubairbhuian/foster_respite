@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foster_respite/app/modules/home/controllers/home_controller.dart';
 import 'package:foster_respite/app/widgets/appbar.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 
 import 'package:get/get.dart';
 
-class BookingDetailsView extends GetView {
-  const BookingDetailsView({super.key});
+class BookingDetailsView extends GetView<HomeController> {
+  final int? statusCode;
+
+
+  const BookingDetailsView({super.key, this.statusCode});
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+
     return Scaffold(
         appBar: const CustomAppBar(),
         bottomSheet: _bottomSheet(theme),
@@ -31,57 +37,59 @@ class BookingDetailsView extends GetView {
                       child: Image.asset(
                           'assets/images/profile/demo_respite.png')),
                   SizedBox(width: 12.sp),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Cameron Williamson",
-                        style: theme.textTheme.labelMedium,
-                      ),
-                      SizedBox(height: 6.sp),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          RatingBar.builder(
-                            initialRating: 3.5,
-                            minRating: 1,
-                            ignoreGestures: true,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemSize: 16,
-                            itemPadding:
-                                const EdgeInsets.symmetric(horizontal: 0),
-                            itemBuilder: (context, _) => const Icon(
-                              Icons.star,
-                              size: 11,
-                              color: Colors.amber,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Cameron Williamson",
+                          style: theme.textTheme.labelMedium,
+                        ),
+                        SizedBox(height: 6.sp),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            RatingBar.builder(
+                              initialRating: 3.5,
+                              minRating: 1,
+                              ignoreGestures: true,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemSize: 16,
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                size: 11,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {},
                             ),
-                            onRatingUpdate: (rating) {},
-                          ),
-                          SizedBox(width: 6.sp),
-                          Text(
-                            "5.0  | 58 Reviews",
-                            style: theme.textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 6.sp),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_rounded,
-                            color: theme.primaryColor,
-                            size: 20.sp,
-                          ),
-                          SizedBox(width: 6.sp),
-                          Text(
-                            "New York, USA",
-                            style: theme.textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                    ],
+                            SizedBox(width: 6.sp),
+                            Text(
+                              "5.0  | 58 Reviews",
+                              style: theme.textTheme.bodySmall,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 6.sp),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on_rounded,
+                              color: theme.primaryColor,
+                              size: 20.sp,
+                            ),
+                            SizedBox(width: 6.sp),
+                            Text(
+                              "New York, USA",
+                              style: theme.textTheme.bodySmall,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -134,7 +142,7 @@ class BookingDetailsView extends GetView {
           )),
           Text(
             value,
-            style:theme.textTheme.labelMedium,
+            style: theme.textTheme.labelMedium,
           ),
         ],
       ),
@@ -142,6 +150,17 @@ class BookingDetailsView extends GetView {
   }
 
   Widget _bottomSheet(ThemeData theme) {
+          String myBTNText({required int? statusCode}) {
+    if (statusCode == null) {
+      return "Make aPayment";
+    }else if (statusCode == 0) {
+      return "Cancel Booking";
+    } else if (statusCode == 1) {
+      return "Move to In Progress";
+    } else {
+      return "Mark as Completed";
+    }
+  }
     return Container(
       color: Colors.white,
       width: double.infinity,
@@ -149,9 +168,9 @@ class BookingDetailsView extends GetView {
       child: Expanded(
           child: PrimaryBtn(
               onPressed: () {
-                Get.to(() => const BookingDetailsView());
+                // Get.to(() => const BookingDetailsView());
               },
-              child: const Text("Make  a Payment"))),
+              child: Text(myBTNText(statusCode: statusCode)))),
     );
   }
 }

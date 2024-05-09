@@ -16,9 +16,9 @@ class EntryPointView extends GetView<EntryPointController> {
           backgroundColor: Colors.white,
           body: IndexedStack(
             index: controller.pageIndex,
-            children: controller.pages,
+            children:controller.isRespiteProvider.value? controller.pages_2: controller.pages,
           ),
-          bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: Obx(() => BottomNavigationBar(
             onTap: (index) {
               controller.pageIndex = index;
               controller.update();
@@ -35,29 +35,31 @@ class EntryPointView extends GetView<EntryPointController> {
             unselectedItemColor: theme.dividerColor,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            items: const [
-                BottomNavigationBarItem(
+            items:  [
+              if(!controller.isRespiteProvider.value)
+                const BottomNavigationBarItem(
                   backgroundColor: Colors.white,
                   icon: FaIcon(IconlyBold.home),
                   label: "Home"),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   backgroundColor: Colors.white,
                   icon: FaIcon(IconlyBold.document),
                   label: "Bookings"),
-              // BottomNavigationBarItem(
-              //     backgroundColor: Colors.white,
-              //     icon: FaIcon(IconlyBold.wallet),
-              //     label: "Earnings"),
-              BottomNavigationBarItem(
+                   if(controller.isRespiteProvider.value)
+              const BottomNavigationBarItem(
+                  backgroundColor: Colors.white,
+                  icon: FaIcon(IconlyBold.wallet),
+                  label: "Earnings"),
+              const BottomNavigationBarItem(
                   backgroundColor: Colors.white,
                   icon: FaIcon(IconlyBold.chat),
                   label: "Messages"),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   backgroundColor: Colors.white,
                   icon: Icon(IconlyBold.profile),
                   label: "Profile")
             ],
-          ));
+          )));
     });
   }
 }

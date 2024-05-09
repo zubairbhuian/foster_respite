@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:foster_respite/app/modules/bookings/controllers/bookings_controller.dart';
 import 'package:foster_respite/app/modules/bookings/views/tabs/foster_bookings_tab.dart';
 import 'package:foster_respite/app/widgets/appbar.dart';
 
 import 'package:get/get.dart';
 
-class FosterBookingsView extends GetView {
+class FosterBookingsView extends GetView<BookingsController>  {
   const FosterBookingsView({super.key});
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,13 @@ class FosterBookingsView extends GetView {
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(
-                        "My Bookings",
+                        "My Bookings user",
                         style: theme.textTheme.titleLarge
                             ?.copyWith(color: Colors.white),
                       ),
                     ),
                     TabBar(
+                      controller: controller.fosterTabController,
                       // isScrollable: true,
                         indicatorColor: theme.primaryColor,
                         dividerHeight: 0,
@@ -57,12 +59,13 @@ class FosterBookingsView extends GetView {
               ),
             ),
             // tab view
-            const Expanded(
+             Expanded(
               child: TabBarView(
-                children: [
-                  FosterBookingsTab(),
-                  FosterBookingsTab(),
-                  FosterBookingsTab(),
+                controller: controller.fosterTabController,
+                children:  const [
+                  FosterBookingsTab(tabIndex: 0,),
+                  FosterBookingsTab(tabIndex: 1,),
+                  FosterBookingsTab(tabIndex: 2,),
                 ],
               ),
             )

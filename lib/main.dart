@@ -61,8 +61,8 @@ class MyApp extends StatelessWidget {
             darkTheme: darkTheme,
             initialBinding: BaseBinding(
             ),
-            // initialRoute: AppPages.INITIAL,
-            initialRoute: Routes.GO_PREMIUM,
+            initialRoute: AppPages.INITIAL,
+            // initialRoute: Routes.ENTRY_POINT,
             getPages: AppPages.routes,
           );
         });

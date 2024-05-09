@@ -84,12 +84,11 @@ class BookNowView extends GetView {
       color: Colors.white,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Expanded(
-          child: PrimaryBtn(
-              onPressed: () {
-                Get.to(() => const BookingDetailsView());
-              },
-              child: const Text("Continue"))),
+      child: PrimaryBtn(
+          onPressed: () {
+            Get.to(() => const BookingDetailsView());
+          },
+          child: const Text("Continue")),
     );
   }
 }

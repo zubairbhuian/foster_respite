@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foster_respite/app/modules/entryPoint/controllers/entry_point_controller.dart';
 import 'package:foster_respite/app/modules/profile/views/availability_view.dart';
 import 'package:foster_respite/app/modules/profile/views/change_password_view.dart';
 import 'package:foster_respite/app/modules/profile/views/contact_us_view.dart';
@@ -42,18 +44,20 @@ class ProfileView extends GetView<ProfileController> {
                   Get.to(() => const ChangePasswordView());
                 },
               ),
+              if (EntryPointController.to.isRespiteProvider.value)
                 CustomTile(
-                title: "My Reviews",
-                onTap: () {
-                  Get.to(() => const ReviewsView());
-                },
-              ),
+                  title: "My Reviews",
+                  onTap: () {
+                    Get.to(() => const ReviewsView());
+                  },
+                ),
+              if (EntryPointController.to.isRespiteProvider.value)
                 CustomTile(
-                title: "Availability",
-                onTap: () {
-                  Get.to(() => const AvailabilityView());
-                },
-              ),
+                  title: "Availability",
+                  onTap: () {
+                    Get.to(() => const AvailabilityView());
+                  },
+                ),
               CustomTile(
                 title: "Contact Us",
                 onTap: () {
@@ -99,7 +103,7 @@ class ProfileView extends GetView<ProfileController> {
                                 width: double.infinity,
                                 child: PrimaryBtn(
                                   onPressed: () {
-                                    Get.offAll(Routes.LOGIN);
+                                    Get.offAllNamed(Routes.AUTH);
                                   },
                                   backgroundColor: const Color(0xffFF6767),
                                   foregroundColor: Colors.white,
@@ -134,11 +138,39 @@ class ProfileView extends GetView<ProfileController> {
                 style: theme.textTheme.titleMedium,
               ),
               SizedBox(height: 8.sp),
-              Text(
-                "demo@gmail.com",
-                style: theme.textTheme.bodyMedium
-                    ?.copyWith(color: theme.dividerColor),
-              ),
+              if (EntryPointController.to.isRespiteProvider.value)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    RatingBar.builder(
+                      initialRating: 3.5,
+                      minRating: 1,
+                      ignoreGestures: true,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: 16,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        size: 11,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {},
+                    ),
+                    SizedBox(width: 6.sp),
+                    Text(
+                      "5.0  | 58 Reviews",
+                      style: theme.textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              if (!EntryPointController.to.isRespiteProvider.value)
+                Text(
+                  "demo@gmail.com",
+                  style: theme.textTheme.bodyMedium
+                      ?.copyWith(color: theme.dividerColor),
+                ),
             ],
           )),
           Container(
