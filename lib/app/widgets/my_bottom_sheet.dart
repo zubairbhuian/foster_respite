@@ -32,6 +32,7 @@ class MyBottomSheet {
                     right: 16,
                     child: InkWell(
                       onTap: () => Get.back(),
+                      splashFactory: NoSplash.splashFactory,
                       child: Container(
                           width: 28,
                           height: 28,
@@ -77,6 +78,7 @@ class MyBottomSheet {
                     right: 16,
                     child: InkWell(
                       onTap: () => Get.back(),
+                      splashFactory: NoSplash.splashFactory,
                       child: Container(
                           width: 28,
                           height: 28,

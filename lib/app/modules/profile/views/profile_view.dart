@@ -7,7 +7,9 @@ import 'package:foster_respite/app/modules/profile/views/availability_view.dart'
 import 'package:foster_respite/app/modules/profile/views/change_password_view.dart';
 import 'package:foster_respite/app/modules/profile/views/contact_us_view.dart';
 import 'package:foster_respite/app/modules/profile/views/my_account_view.dart';
+import 'package:foster_respite/app/modules/profile/views/privacy_policy_view.dart';
 import 'package:foster_respite/app/modules/profile/views/reviews_view.dart';
+import 'package:foster_respite/app/modules/profile/views/terms_and_conditions_view.dart';
 import 'package:foster_respite/app/routes/app_pages.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/custom_tile.dart';
@@ -66,12 +68,16 @@ class ProfileView extends GetView<ProfileController> {
               ),
               CustomTile(
                 title: "Terms & Conditions",
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const TermsAndConditionsView());
+                },
               ),
               CustomTile(
                 title: "Privacy Policy",
                 isDivider: false,
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const PrivacyPolicyView());
+                },
               ),
               SizedBox(height: 54.sp),
               Padding(

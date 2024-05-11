@@ -116,7 +116,7 @@ class UploadDocuments extends GetView<AuthController> {
                   controller.pageIncrement();
                   Preferences.isRespiteProvider =
                       controller.isRespiteProvider.value;
-                  Get.offAndToNamed(Routes.ENTRY_POINT);
+                  Get.offAllNamed(Routes.GO_PREMIUM);
                 },
                 child: const Text(
                   "Continue",

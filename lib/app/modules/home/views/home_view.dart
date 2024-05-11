@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foster_respite/app/modules/home/views/provider_details_screen_view.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 import 'package:foster_respite/app/widgets/custom_textfield.dart';
+import 'package:foster_respite/app/widgets/my_bottom_sheet.dart';
 import 'package:foster_respite/config/gape.dart';
 
 import 'package:get/get.dart';
@@ -21,7 +22,7 @@ class HomeView extends GetView<HomeController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _banner(theme),
+            _banner(theme, context),
             _respiteProviders(theme),
             SizedBox(height: 20.sp),
             _popularRespiteProviders(theme)
@@ -31,7 +32,7 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _banner(ThemeData theme) {
+  Widget _banner(ThemeData theme, BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -84,7 +85,48 @@ class HomeView extends GetView<HomeController> {
                     width: 48,
                     height: 48,
                     child: PrimaryBtn(
-                      onPressed: () {},
+                      onPressed: () {
+                        MyBottomSheet.modal(
+                            context: context,
+                            height: 500,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5.sp),
+                                Text(
+                                  'Filter',
+                                  style: theme.textTheme.headlineSmall,
+                                ),
+                                Text(
+                                  'Enter your preference information to find the best provider.',
+                                  style: theme.textTheme.bodyMedium
+                                      ?.copyWith(color: theme.hintColor),
+                                ),
+                                SizedBox(height: 16.sp),
+                                const CustomTextField(
+                                  extraLabel: "City",
+                                  hintText: "Enter",
+                                ),
+                                const CustomTextField(
+                                  extraLabel: "State",
+                                  hintText: "Enter",
+                                ),
+                                SizedBox(
+                                  width: 160.w,
+                                  child: const CustomTextField(
+                                    extraLabel: "Zip Code",
+                                    hintText: "Enter",
+                                  ),
+                                ),
+                                // SizedBox(height: 50.h),
+                                SizedBox(
+                                    width: double.infinity,
+                                    child: PrimaryBtn(
+                                        onPressed: () {},
+                                        child: const Text("Apply")))
+                              ],
+                            ));
+                      },
                       borderRadius: 800,
                       padding: EdgeInsets.zero,
                       child: const Icon(IconlyLight.filter),
@@ -308,7 +350,6 @@ class HomeView extends GetView<HomeController> {
                             )
                           ],
                         ),
-                       
                         Divider(
                           height: 40,
                           thickness: .8,
@@ -333,7 +374,8 @@ class HomeView extends GetView<HomeController> {
                             )),
                             PrimaryBtn(
                                 onPressed: () {
-                                  Get.to(() => const ProviderDetailsScreenView());
+                                  Get.to(
+                                      () => const ProviderDetailsScreenView());
                                 },
                                 child: const Text("Book Now"))
                           ],

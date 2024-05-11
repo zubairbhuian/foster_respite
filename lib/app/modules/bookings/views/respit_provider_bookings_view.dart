@@ -66,10 +66,10 @@ class RespitProviderBookingsView extends GetView<BookingsController> {
                         0,
                   ),
                   RespitProviderBookingsTab(
-                    tabIndex:0,
+                    tabIndex:1,
                   ),
                   RespitProviderBookingsTab(
-                    tabIndex:0,
+                    tabIndex:2,
                   ),
                 ],
               ),

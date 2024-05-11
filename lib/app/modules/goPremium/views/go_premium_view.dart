@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foster_respite/app/routes/app_pages.dart';
 import 'package:foster_respite/app/widgets/custom_btn.dart';
 
 import 'package:get/get.dart';
@@ -104,7 +105,7 @@ class GoPremiumView extends GetView<GoPremiumController> {
             height: 32,
             child: InkWell(
               onTap: () {
-                Get.back();
+                Get.offAndToNamed(Routes.ENTRY_POINT);
               },
               child: const Icon(
                 Icons.close,
